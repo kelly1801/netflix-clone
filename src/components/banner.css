@@ -1,5 +1,5 @@
 .banner {
-  height: 300px;
+  height: 350px;
   position: relative;
   color: #fff;
   object-fit: contain;
@@ -42,7 +42,7 @@
 }
 
 .banner--fadeBottom {
-  height: 7.4rem;
+  height: 10rem;
   background-image: linear-gradient(
     180deg,
     transparent,
