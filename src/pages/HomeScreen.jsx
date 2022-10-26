@@ -1,6 +1,3 @@
-import  {useState, useEffect} from 'react'
-import './homeScreen.css'
-import Nav from '../components/Nav'
 import Banner from '../components/Banner'
 import Row from '../components/Row'
 import { requests } from '../axios/request'
@@ -10,7 +7,7 @@ const HomeScreen = () => {
   return (
     <main className='homeScreen'>
       
-      <Nav/>
+     
       
       <Banner/>
 
