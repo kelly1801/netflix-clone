@@ -6,7 +6,7 @@ const Button = ({ children }) => {
 
 export default Button;
 
-const BTN = styled.button`
+export const BTN = styled.button`
 position: fixed;
 right: 20px;
 top: 20px;

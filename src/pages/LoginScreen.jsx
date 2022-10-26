@@ -1,10 +1,15 @@
+import { useState } from "react";
 import styled from "styled-components";
-import Button from "../components/Button";
+import SignInScreen from "./SignInScreen";
 const LoginScreen = () => {
+    const [signIn, setSignIn] = useState(false);
   return (
     <LoginScreenContainer>
       <LoginScreenGradient />
       <LoginScreenBody>
+        
+        {signIn ? <SignInScreen/> : 
+        
         <>
           <h1>Unlimited films, TV programs and more.</h1>
           <h2>Watch anywhhere, Cancel at any time</h2>
@@ -16,10 +21,12 @@ const LoginScreen = () => {
           <LoginScreenInput>
             <form>
               <input type="email" placeholder="Email Address" />
-              <Btn>GET STARTED</Btn>
+              <Btn onClick={() => setSignIn(true)}>GET STARTED</Btn>
             </form>
           </LoginScreenInput>
         </>
+        }
+        
       </LoginScreenBody>
     </LoginScreenContainer>
   );
@@ -30,11 +37,13 @@ export default LoginScreen;
 const LoginScreenContainer = styled.main`
   position: relative;
   height: 100%;
+  overflow: hidden;
   background: url("https://yourspanishguide.com/wp-content/uploads/2021/02/dUyCkp.jpg")
     center no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const LoginScreenGradient = styled.div`
@@ -53,11 +62,12 @@ const LoginScreenGradient = styled.div`
 const LoginScreenBody = styled.div`
   position: absolute;
   top: 30%;
-
   z-index: 1;
   color: #fff;
   padding: 2rem;
   text-align: center;
+ 
+
 
   h1 {
     font-size: 3.125rem;
@@ -79,7 +89,7 @@ const LoginScreenInput = styled.div`
   justify-content: center;
   align-items: center;
   form {
-    height: 30px;
+    height: 50px;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -94,7 +104,7 @@ const LoginScreenInput = styled.div`
     max-width: 600px;
   }
 `;
-const Btn = styled.button`
+export const Btn = styled.button`
   padding: 0.5rem;
   font-size: 1rem;
   color: #fff;
