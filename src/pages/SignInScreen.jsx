@@ -1,20 +1,33 @@
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { BTN } from "../components/Button";
+import {createAuthUserWithEmailAndPassword, signInAuthUserWithEmailAndPassword} from '../firebase/firebase'
+
+
 const SignInScreen = () => {
-  const register = (e) => {
+ 
+   const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+  const register = async (e) => {
     e.preventDefault();
+    createAuthUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
+   
+  
   };
 
   const signIn = (e) => {
     e.preventDefault();
+ 
+    signInAuthUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
+  
   };
 
   return (
     <SignInContainer>
       <Form>
         <h1>Sign In</h1>
-        <input type="email" placeholder="email" name="password" />
-        <input type="password" placeholder="password" name="password" />
+        <input type="email" ref={emailRef} placeholder="email" name="password" />
+        <input type="password" ref={passwordRef} placeholder="password" name="password" />
         <Button type="submit" onClick={signIn}>
           Sign in
         </Button>

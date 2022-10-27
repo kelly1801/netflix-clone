@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import SignInButton from './Button'
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
+import { useNavigate } from "react-router-dom";
+import SignInButton from "./Button";
+
 const Nav = () => {
   const [show, setShow] = useState(false);
-  const user = null;
+const navigate = useNavigate()
+  const user = useSelector(selectUser);
 
   const transitionScrollBar = () => {
     setShow(window.scrollY > 100 && true);
@@ -17,6 +22,7 @@ const Nav = () => {
     <NavBar black={show}>
       <NavContent>
         <NavLogo
+        onClick={() => navigate('/')}
           src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
           alt="netflix logo"
         />
@@ -24,7 +30,8 @@ const Nav = () => {
         {!user ? (
           <SignInButton>Sign In</SignInButton>
         ) : (
-          <Avatar
+          <Avatar 
+          onClick={() => navigate('/profile')}
             src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
             alt="user avatar"
           />
